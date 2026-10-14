@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SoFlo Cinema Club</title>
+  <meta name="description" content="Join our community for discussions, events, movies, games, concerts & more!">
+  <meta property="og:title" content="SoFlo Cinema Club">
+  <meta property="og:description" content="Join our community for discussions, events, movies, games, concerts & more!">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#120a0c">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #120a0c;
+      --bg-2: #1b1013;
+      --card: #231518;
+      --ink: #f6ecdc;
+      --muted: #b9a99a;
+      --red: #d6293e;
+      --gold: #f2b84b;
+      --line: rgba(246, 236, 220, .12);
+      --radius: 14px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(1100px 500px at 50% -10%, rgba(214, 41, 62, .28), transparent 70%),
+        var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    a { color: inherit; text-decoration: none; }
+    :focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; border-radius: 8px; }
+    .wrap { width: min(980px, 100% - 32px); margin-inline: auto; }
+
+    /* film strip edge */
+    .strip {
+      height: 22px;
+      background:
+        repeating-linear-gradient(90deg, var(--bg-2) 0 18px, transparent 18px 34px) center / 100% 10px no-repeat,
+        #0a0607;
+      border-bottom: 1px solid var(--line);
+    }
+
+    /* hero */
+    header.hero { text-align: center; padding: 72px 0 56px; }
+    .eyebrow {
+      display: inline-block;
+      font-size: .8rem; letter-spacing: .28em; text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(242, 184, 75, .45);
+      padding: 6px 14px; border-radius: 999px;
+    }
+    h1 {
+      font-family: "Bebas Neue", Impact, sans-serif;
+      font-weight: 400;
+      font-size: clamp(3.4rem, 12vw, 7.5rem);
+      line-height: .95;
+      letter-spacing: .02em;
+      margin: 22px 0 18px;
+      text-shadow: 0 0 40px rgba(214, 41, 62, .45);
+    }
+    h1 span { color: var(--red); }
+    .tagline { color: var(--muted); font-size: clamp(1.05rem, 2.4vw, 1.3rem); max-width: 620px; margin: 0 auto 32px; }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-weight: 600;
+      padding: 14px 26px; border-radius: 999px;
+      background: var(--red); color: #fff;
+      box-shadow: 0 8px 28px rgba(214, 41, 62, .4);
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 12px 34px rgba(214, 41, 62, .55); }
+    .btn.ghost { background: transparent; border: 1px solid var(--line); box-shadow: none; color: var(--ink); }
+    .btn.ghost:hover { border-color: var(--gold); }
+    .cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+    /* sections */
+    section { padding: 44px 0; }
+    h2 {
+      font-family: "Bebas Neue", Impact, sans-serif; font-weight: 400;
+      font-size: clamp(2rem, 5vw, 2.8rem); letter-spacing: .05em;
+      margin-bottom: 8px;
+    }
+    .sub { color: var(--muted); margin-bottom: 26px; }
+
+    /* what we do */
+    .do-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; }
+    .do {
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: var(--radius); padding: 22px 16px; text-align: center;
+    }
+    .do .ico { font-size: 1.9rem; display: block; margin-bottom: 8px; }
+    .do b { font-weight: 600; }
+
+    /* ticket-style link cards */
+    .tickets { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+    .ticket {
+      position: relative;
+      display: flex; flex-direction: column; gap: 4px;
+      background: linear-gradient(135deg, var(--card), var(--bg-2));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 20px 22px 20px 26px;
+      transition: transform .15s ease, border-color .15s ease;
+    }
+    .ticket::before {
+      content: ""; position: absolute; left: 0; top: 14px; bottom: 14px; width: 4px;
+      background: var(--red); border-radius: 0 4px 4px 0;
+    }
+    .ticket:hover { transform: translateY(-3px); border-color: var(--gold); }
+    .ticket .name { font-weight: 600; font-size: 1.05rem; }
+    .ticket .desc { color: var(--muted); font-size: .92rem; }
+    .ticket .go { margin-top: 8px; color: var(--gold); font-size: .85rem; letter-spacing: .08em; text-transform: uppercase; }
+    .ticket.featured { border-color: rgba(214, 41, 62, .6); }
+    .ticket.featured::before { background: var(--gold); }
+
+    footer { text-align: center; color: var(--muted); font-size: .85rem; padding: 40px 0 56px; border-top: 1px solid var(--line); margin-top: 24px; }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="strip" aria-hidden="true"></div>
+
+  <header class="hero">
+    <div class="wrap">
+      <span class="eyebrow">South Florida &bull; Community</span>
+      <h1>SoFlo <span>Cinema</span> Club</h1>
+      <p class="tagline">Join our community for discussions, events, movies, games, concerts &amp; more!</p>
+      <div class="cta">
+        <a class="btn" href="https://discord.gg/KKa78XtebT" target="_blank" rel="noopener">Join our Discord</a>
+        <a class="btn ghost" href="#connect">All our links</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section aria-labelledby="about">
+      <div class="wrap">
+        <h2 id="about">What We&rsquo;re About</h2>
+        <p class="sub">A friendly crew of film lovers hanging out together, online and in person.</p>
+        <div class="do-grid">
+          <div class="do"><span class="ico" aria-hidden="true">💬</span><b>Discussions</b></div>
+          <div class="do"><span class="ico" aria-hidden="true">🎟️</span><b>Events</b></div>
+          <div class="do"><span class="ico" aria-hidden="true">🎬</span><b>Movies</b></div>
+          <div class="do"><span class="ico" aria-hidden="true">🎮</span><b>Games</b></div>
+          <div class="do"><span class="ico" aria-hidden="true">🎶</span><b>Concerts</b></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="connect" aria-labelledby="join">
+      <div class="wrap">
+        <h2 id="join">Get Connected</h2>
+        <p class="sub">Pick your favorite place to hang out with us.</p>
+        <div class="tickets">
+          <a class="ticket featured" href="https://discord.gg/KKa78XtebT" target="_blank" rel="noopener">
+            <span class="name">Discord Server</span>
+            <span class="desc">Our main hangout. Free to join.</span>
+            <span class="go">Join &rarr;</span>
+          </a>
+          <a class="ticket" href="https://www.instagram.com/soflocinemaclub" target="_blank" rel="noopener">
+            <span class="name">Instagram</span>
+            <span class="desc">@soflocinemaclub</span>
+            <span class="go">Follow &rarr;</span>
+          </a>
+          <a class="ticket" href="https://www.tiktok.com/@soflocinemaclub" target="_blank" rel="noopener">
+            <span class="name">TikTok</span>
+            <span class="desc">@soflocinemaclub</span>
+            <span class="go">Watch &rarr;</span>
+          </a>
+          <a class="ticket" href="https://www.facebook.com/share/1HmzzjUocj/?mibextid=wwXIfr" target="_blank" rel="noopener">
+            <span class="name">Facebook</span>
+            <span class="desc">Follow along on Facebook.</span>
+            <span class="go">Visit &rarr;</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="chats">
+      <div class="wrap">
+        <h2 id="chats">Group Chats &amp; Channels</h2>
+        <p class="sub">Jump into the conversation.</p>
+        <div class="tickets">
+          <a class="ticket" href="https://www.instagram.com/channel/FH6oVWirhjwaPsXR" target="_blank" rel="noopener">
+            <span class="name">Instagram Channel</span>
+            <span class="desc">Updates and announcements.</span>
+            <span class="go">Open &rarr;</span>
+          </a>
+          <a class="ticket" href="https://ig.me/j/AbYi_mRD-i2KcYNa/" target="_blank" rel="noopener">
+            <span class="name">Instagram Group Chat</span>
+            <span class="desc">Chat with the club on IG.</span>
+            <span class="go">Join &rarr;</span>
+          </a>
+          <a class="ticket" href="https://tiktok.me/group/ZPLJe1N9S/" target="_blank" rel="noopener">
+            <span class="name">TikTok Group Chat</span>
+            <span class="desc">Chat with the club on TikTok.</span>
+            <span class="go">Join &rarr;</span>
+          </a>
+          <a class="ticket" href="https://m.me/j/RUUL3fGjbpRMOopb/?send_source=gc:copy_invite_link_c" target="_blank" rel="noopener">
+            <span class="name">Central FL Facebook Group Chat</span>
+            <span class="desc">For our Central Florida crew.</span>
+            <span class="go">Join &rarr;</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>&copy; <span id="yr">2026</span> SoFlo Cinema Club. See you at the movies. 🍿</p>
+    </div>
+  </footer>
+  <script>document.getElementById("yr").textContent = new Date().getFullYear();</script>
+</body>
+</html>
