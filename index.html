@@ -50,7 +50,9 @@
 
     /* hero */
     header.hero { text-align: center; padding: 72px 0 56px; }
-    .ticket-img { display: block; width: min(260px, 70%); height: auto; margin: 0 auto 20px; border-radius: var(--radius); }
+    .brand { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 8px 22px; margin: 22px 0 18px; }
+    .brand h1 { margin: 0; }
+    .ticket-img { display: block; width: clamp(110px, 16vw, 170px); height: auto; border-radius: var(--radius); }
     .eyebrow {
       display: inline-block;
       font-size: .8rem; letter-spacing: .28em; text-transform: uppercase;
@@ -135,9 +137,11 @@
 
   <header class="hero">
     <div class="wrap">
-      <img class="ticket-img" src="ticket.png" alt="SoFlo Cinema Club ticket" width="800" height="800">
       <span class="eyebrow">South Florida &bull; Community</span>
-      <h1>SoFlo <span>Cinema</span> Club</h1>
+      <div class="brand">
+        <img class="ticket-img" src="ticket.png" alt="" width="800" height="800" aria-hidden="true">
+        <h1>SoFlo <span>Cinema</span> Club</h1>
+      </div>
       <p class="tagline">Join our community for discussions, events, movies, games, concerts &amp; more!</p>
       <div class="cta">
         <a class="btn" href="https://discord.gg/KKa78XtebT" target="_blank" rel="noopener">Join our Discord</a>
